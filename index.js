@@ -1,8 +1,9 @@
-const express = require("express");
-const logger = require("morgan");
+import express from "express";
+import logger from "morgan";
+import "dotenv/config";
+import { indexRouter } from "./routes/index.js";
 const port = process.env.PORT || 5000;
-const indexRouter = require("./routes/index");
-
+import { db } from "./config/mongoose.js";
 const app = express();
 
 app.use(logger("dev"));
