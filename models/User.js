@@ -42,20 +42,20 @@ const userSchema = new mongoose.Schema({
     default: "",
   },
   debitCards: {
-    type: Array,
-    default: [],
+    type: String,
+    default: "",
   },
   upi: {
-    type: Array,
-    default: [],
+    type: String,
+    default: "",
   },
   myOrders: {
-    type: Array,
-    default: [],
+    type: String,
+    default: "",
   },
   cart: {
-    type: Array,
-    default: [],
+    type: String,
+    default: "",
   },
 });
 
