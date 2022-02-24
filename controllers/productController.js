@@ -9,12 +9,13 @@ export const getProducts = async (req, res) => {
   }
 };
 
-export const setProducts = async (req, res) => {
+export const createProducts = async (req, res) => {
   try {
     const newProduct = await Product.create(req.body);
     res.status(201).json(newProduct);
   } catch (error) {
-    res.status(400).json({ message: error.message });
+    console.log("Error while posting product ", error.message);
+    res.status(400).end();
   }
 };
 
@@ -26,7 +27,7 @@ export const getSingleProduct = async (req, res) => {
     }
     res.status(200).json(product);
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(500).end();
   }
 };
 
@@ -40,7 +41,7 @@ export const updateProduct = async (req, res) => {
     }
     res.status(200).json(product);
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(500).end();
   }
 };
 
@@ -53,6 +54,6 @@ export const deleteProduct = async (req, res) => {
     await product.remove();
     res.status(200).json(`Product with id ${req.params.id} has been deleted.`);
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(500).end();
   }
 };
