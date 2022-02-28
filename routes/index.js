@@ -1,4 +1,5 @@
 import express from "express";
+import { userRouter } from "./user.js";
 export const indexRouter = express.Router();
 import { productRouter } from "../routes/productRoutes.js";
 import { reviewRouter } from "./reviewRoutes.js";
@@ -9,3 +10,4 @@ indexRouter.get("/", function (req, res) {
 
 indexRouter.use("/product", productRouter);
 indexRouter.use("/review", reviewRouter);
+indexRouter.use("/user", userRouter);
