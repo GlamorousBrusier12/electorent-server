@@ -27,3 +27,20 @@ export const getUser = async (req, res) => {
     res.status(400).end();
   }
 };
+
+export const updateUser = async (req, res) => {
+  try {
+    // make sure from the front-end that user is not updating the email, password
+    // changing password might involve few additional steps
+    // currently we can change any detail of the user
+    const user = await User.findByIdAndUpdate(req.params.uid, req.body, {
+      new: true,
+    });
+    if (!user) {
+      res.status(404).json({ message: "User Not Found" });
+    }
+    res.status(200).json({ message: "User updated sucessfully", user });
+  } catch (error) {
+    res.status(500).end();
+  }
+};
