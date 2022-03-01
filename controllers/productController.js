@@ -57,3 +57,18 @@ export const deleteProduct = async (req, res) => {
     res.status(500).end();
   }
 };
+
+export const getCategoryProducts = async (req, res) => {
+  try {
+    const categoryName = req.params.categoryName;
+    console.log(req.params);
+    const products = await Product.find({ category: categoryName });
+    res.status(200).json({
+      message: `products related to  ${categoryName}category`,
+      products,
+    });
+  } catch (error) {
+    console.log("error in fetching the products related to category: ", error);
+    res.status(500).end();
+  }
+};
