@@ -14,7 +14,7 @@ export const createReviews = async (req, res) => {
   try {
     const productId = req.body.productId;
     const newReview = await Review.create({ productId, ...req.body });
-    res.status(201).json(newReview, { message: "Posted a Review!" });
+    res.status(201).json({ newReview, message: "Posted a Review!" });
   } catch (error) {
     console.log("Error while posting Review ", error.message);
     res.status(400).end();
