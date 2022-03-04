@@ -17,3 +17,30 @@ export const placeOrder = async (req, res) => {
     res.status(500).end();
   }
 };
+
+export const getAllOrders = async (req, res) => {
+  try {
+    const userOrders = await Order.find({});
+    res.status(200).json({
+      userOrders,
+    });
+  } catch (error) {
+    console.log("error in retreiving the order details of the user", error);
+    res.status(500).end();
+  }
+};
+
+export const getUserOrders = async (req, res) => {
+  try {
+    const userId = req.params.userId;
+    const userOrders = await Order.find({
+      userId,
+    });
+    res.status(200).json({
+      userOrders,
+    });
+  } catch (error) {
+    console.log("error in retreiving the order details of the user", error);
+    res.status(500).end();
+  }
+};

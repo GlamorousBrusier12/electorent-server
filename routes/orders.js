@@ -1,7 +1,12 @@
 import express from "express";
-import { placeOrder } from "../controllers/orders.js";
+import { getUserOrders, placeOrder } from "../controllers/orders.js";
 export const orderRouter = express.Router();
 
 // test route for api
 orderRouter.route("/").post(placeOrder);
-// orderRouter.route("/:uid").get().patch();
+
+// get all orders
+orderRouter.route("/").get(getUserOrders);
+
+// get all orders
+orderRouter.route("/:userId").get(getUserOrders);
