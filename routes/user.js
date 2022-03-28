@@ -1,7 +1,7 @@
 import express from "express";
-import { createUser, getUser } from "../controllers/user.js";
+import { createUser, getUser, updateUser } from "../controllers/user.js";
 export const userRouter = express.Router();
 
 // test route for api
 userRouter.post("/", createUser);
-userRouter.get("/:uid", getUser);
+userRouter.route("/:uid").get(getUser).patch(updateUser);
