@@ -66,7 +66,7 @@ export const deleteOrder = async (req, res) => {
   try {
     const orderId = req.params.orderId;
     const order = await Order.findByIdAndDelete(orderId);
-
+    // unlink all the user related data
     res.status(200).json({
       message: "deleted order sucessfully",
     });
