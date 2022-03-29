@@ -1,7 +1,6 @@
 import { User } from "../models/User.js";
 
 export const createUser = async (req, res) => {
-  // console.log(req.body);
   try {
     const newUser = await User.create(req.body);
     res.status(201).json({
@@ -33,7 +32,8 @@ export const updateUser = async (req, res) => {
     // make sure from the front-end that user is not updating the email, password
     // changing password might involve few additional steps
     // currently we can change any detail of the user
-    const user = await User.findByIdAndUpdate(req.params.uid, req.body, {
+    const userId = "6206a449b867589102e71f54";
+    const user = await User.findByIdAndUpdate(userId, req.body, {
       new: true,
     });
     if (!user) {
@@ -41,6 +41,21 @@ export const updateUser = async (req, res) => {
     }
     res.status(200).json({ message: "User updated sucessfully", user });
   } catch (error) {
+    console.log("error in update the user: ", error);
+    res.status(500).end();
+  }
+};
+
+export const deleteUser = async (req, res) => {
+  try {
+    const userId = "6206a449b867589102e71f54";
+    // const userId = req.user.id;
+    const user = await User.findByIdAndDelete(userId);
+    res.status(200).json({
+      message: "deleted user sucessfully",
+    });
+  } catch (error) {
+    console.log("error in deleting the user: ", error);
     res.status(500).end();
   }
 };

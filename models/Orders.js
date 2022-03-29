@@ -3,11 +3,11 @@ import mongoose from "mongoose";
 const OrderSchema = new mongoose.Schema({
   userId: {
     type: mongoose.SchemaTypes.ObjectId,
-    ref: "Users",
+    ref: "User",
   },
   productId: {
     type: mongoose.SchemaTypes.ObjectId,
-    ref: "ProductId",
+    ref: "Product",
   },
   qty: {
     type: Number,

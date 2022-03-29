@@ -44,3 +44,34 @@ export const getUserOrders = async (req, res) => {
     res.status(500).end();
   }
 };
+
+export const updateOrder = async (req, res) => {
+  try {
+    const orderId = req.params.orderId;
+    const newOrderDetails = req.body;
+    const order = await Order.findByIdAndUpdate(orderId, newOrderDetails, {
+      new: true,
+    });
+    res.status(200).json({
+      message: "updated order sucessfully",
+      order: order,
+    });
+  } catch (error) {
+    console.log("error in updating the orders", error);
+    res.status(500).end();
+  }
+};
+
+export const deleteOrder = async (req, res) => {
+  try {
+    const orderId = req.params.orderId;
+    const order = await Order.findByIdAndDelete(orderId);
+    // unlink all the user related data
+    res.status(200).json({
+      message: "deleted order sucessfully",
+    });
+  } catch (error) {
+    console.log("error in deleting the order details of the user", error);
+    res.status(500).end();
+  }
+};
