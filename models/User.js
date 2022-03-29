@@ -23,6 +23,15 @@ const userSchema = new mongoose.Schema({
   panNumber: {
     type: String,
   },
+  fatherName: {
+    type: String,
+  },
+  address: {
+    type: String,
+  },
+  job: {
+    type: String,
+  },
   dob: {
     type: String,
   },
