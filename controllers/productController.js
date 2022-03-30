@@ -60,8 +60,9 @@ export const deleteProduct = async (req, res) => {
 
 export const getCategoryProducts = async (req, res) => {
   try {
-    const categoryName = req.params.categoryName;
-    console.log(req.params);
+    let categoryName = req.params.categoryName;
+    categoryName = categoryName.toLowerCase();
+    // console.log(req.params);
     const products = await Product.find({ category: categoryName });
     res.status(200).json({
       message: `products related to  ${categoryName}category`,

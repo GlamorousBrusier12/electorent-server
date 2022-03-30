@@ -3,8 +3,12 @@ import logger from "morgan";
 import { indexRouter } from "./routes/index.js";
 import { PORT } from "./config/config.js";
 import { db } from "./config/mongoose.js";
+import swaggerUi from "swagger-ui-express";
+import YAML from "yamljs";
 const app = express();
+const swaggerDocument = YAML.load("./swagger.yaml");
 
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
