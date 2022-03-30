@@ -11,7 +11,10 @@ export const getProducts = async (req, res) => {
 
 export const createProducts = async (req, res) => {
   try {
-    const newProduct = await Product.create(req.body);
+    const newProduct = await Product.create({
+      ...req.body,
+      category: req.body.category.toLowerCase(),
+    });
     res.status(201).json(newProduct);
   } catch (error) {
     console.log("Error while posting product ", error.message);
