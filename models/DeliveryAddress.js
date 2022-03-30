@@ -27,4 +27,7 @@ const deliveryAddressSchema = new mongoose.Schema({
   },
 });
 
-export const Order = mongoose.model("DeliveryAddress", deliveryAddressSchema);
+export const deliveryAddress = mongoose.model(
+  "DeliveryAddress",
+  deliveryAddressSchema
+);

@@ -17,6 +17,10 @@ const debitCardSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  cvv: {
+    type: Number,
+    required: true,
+  },
   expiry: {
     type: String,
     required: true,
@@ -27,4 +31,4 @@ const debitCardSchema = new mongoose.Schema({
   },
 });
 
-export const Order = mongoose.model("DebitCard", debitCardSchema);
+export const debitCard = mongoose.model("DebitCard", debitCardSchema);

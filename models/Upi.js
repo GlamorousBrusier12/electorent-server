@@ -27,4 +27,4 @@ const upiSchema = new mongoose.Schema({
   },
 });
 
-export const Order = mongoose.model("Upi", upiSchema);
+export const upi = mongoose.model("Upi", upiSchema);
