@@ -18,12 +18,12 @@ const productSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-    image: [
-      {
-        type: String,
-        required: true,
-      },
-    ],
+  image: [
+    {
+      type: String,
+      required: true,
+    },
+  ],
   rating: {
     rate: {
       type: Number,
@@ -48,20 +48,6 @@ const productSchema = mongoose.Schema({
     type: Number,
     required: true,
   },
-  //   reviews: [
-  //     {
-  //       type: String,
-  //       required: true,
-  //       default: []
-  //     },
-  //   ],
-  //   faqs: [
-  //     {
-  //       type: String,
-  //       required: true,
-  //       default: []
-  //     },
-  //   ],
 });
 
-export default mongoose.model("Products",productSchema);
+export const Product = mongoose.model("Product", productSchema);
