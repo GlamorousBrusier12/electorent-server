@@ -20,3 +20,30 @@ export const createReviews = async (req, res) => {
     res.status(400).end();
   }
 };
+
+export const updateReview = async (req, res) => {
+  try {
+    let review = await Review.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    });
+    if (!review) {
+      res.status(404).json({ message: "Review not found" });
+    }
+    res.status(200).json(review);
+  } catch (error) {
+    res.status(500).end();
+  }
+};
+
+export const deleteReview = async (req, res) => {
+  try {
+    const review = await Review.findByIdAndRemove(req.params.id);
+    if (!review) {
+      return res.status(404).json({ message: "Review not found" });
+    }
+    res.status(200).json(`Review ${req.params.id} deleted`);
+  } catch (error) {
+    console.log(error, "Error in deleting Review");
+    res.status(500).end();
+  }
+};
