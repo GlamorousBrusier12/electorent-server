@@ -5,15 +5,16 @@ import {
   getUserDebitCards,
   placeDebitCard,
   updateDebitCard,
-} from "../controllers/debitCardController";
+} from "../controllers/debitCardController.js";
 
 export const debitCardRouter = express.Router();
 
+debitCardRouter.route("/").get(getAllDebitCards);
 debitCardRouter.route("/").post(placeDebitCard);
 
 debitCardRouter.route("/:userId").get(getUserDebitCards);
 
 debitCardRouter
-  .route("/:orderId")
+  .route("/:userId")
   .patch(updateDebitCard)
   .delete(deleteDebitCard);

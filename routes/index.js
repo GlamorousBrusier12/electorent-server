@@ -6,6 +6,8 @@ import { reviewRouter } from "./reviewRoutes.js";
 import { faqRouter } from "./faqRoutes.js";
 import { orderRouter } from "./orders.js";
 import { addressRouter } from "./addressRoutes.js";
+import { debitCardRouter } from "./debitCard.js";
+import { upiRouter } from "./upi.js";
 // test route for api
 indexRouter.get("/", function (req, res) {
   res.status(200).json({ message: "ok" });
@@ -17,3 +19,5 @@ indexRouter.use("/faq", faqRouter);
 indexRouter.use("/user", userRouter);
 indexRouter.use("/orders", orderRouter);
 indexRouter.use("/address", addressRouter);
+indexRouter.use("/debitcard", debitCardRouter);
+indexRouter.use("/upi", upiRouter);

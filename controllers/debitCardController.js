@@ -1,4 +1,4 @@
-import { debitCard } from "../models/DebitCards";
+import { debitCard } from "../models/DebitCards.js";
 
 export const placeDebitCard = async (req, res) => {
   try {

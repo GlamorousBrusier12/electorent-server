@@ -6,12 +6,13 @@ import {
   getUserUpis,
   placeUpi,
   updateUpi,
-} from "../controllers/upiController";
+} from "../controllers/upiController.js";
 
 export const upiRouter = express.Router();
 
+upiRouter.route("/").get(getAllUpis);
 upiRouter.route("/").post(placeUpi);
 
 upiRouter.route("/:userId").get(getUserUpis);
 
-upiRouter.route("/:orderId").patch(updateUpi).delete(deleteUpi);
+upiRouter.route("/:userId").patch(updateUpi).delete(deleteUpi);

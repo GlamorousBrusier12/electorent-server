@@ -1,4 +1,4 @@
-import { upi } from "../models/Upi";
+import { upi } from "../models/Upi.js";
 
 export const placeUpi = async (req, res) => {
   try {

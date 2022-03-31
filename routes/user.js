@@ -8,6 +8,7 @@ import {
 export const userRouter = express.Router();
 
 // test route for api
+// userRouter.get('/getAll', getall)
 userRouter.post("/", createUser);
 userRouter.route("/:uid").get(getUser);
 userRouter.route("/").patch(updateUser).delete(deleteUser);
