@@ -10,10 +10,6 @@ const addressSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  // avatar: {
-  //   type: String,
-  //   required: true,
-  // },
   mobileNumber: {
     type: Number,
     required: true,
