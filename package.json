@@ -2,10 +2,12 @@
   "name": "electorent-server",
   "version": "0.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "start": "nodemon ./index.js"
   },
   "dependencies": {
+    "body-parser": "^1.19.2",
     "debug": "~2.6.9",
     "dotenv": "^16.0.0",
     "express": "~4.16.1",
