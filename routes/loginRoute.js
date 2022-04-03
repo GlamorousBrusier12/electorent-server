@@ -7,14 +7,20 @@ import { User } from "../models/User.js";
 import { userRouter } from "./user.js";
 loginRoute.post("/", async (req, res) => {
   const user = {
-    emailid: req.body.useremail,
     password: req.body.password,
+    useremail: req.body.useremail,
   };
   // Verify User Id and Password
-
-  const userCheck = await User.findOne({ emailid: req.body.email });
+  console.log(user);
+  console.log(user);
+  const userCheck = await User.findOne({ emailid: user.useremail });
+  console.log(userCheck);
   if (userCheck !== undefined) {
-    if (userCheck.password === user.password) {
+    if (
+      userCheck.email === user.email &&
+      userCheck.password === user.password
+    ) {
+      console.log("Successs");
       jwt.sign({ user }, SECRET_KEY, { expiresIn: "24h" }, (err, token) => {
         if (err) {
           res.sendStatus(400);
