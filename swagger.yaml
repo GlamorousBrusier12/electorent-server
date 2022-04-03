@@ -188,11 +188,143 @@ paths:
               schema:
                 $ref: "#/components/schemas/users"
   /review/{productId}:
+    get:
+      summary: Get the review for the ProductId
+      tags: [Reviews]
+      parameters:
+        - name: productId
+          in: path
+          required: true
+          description: This is the ProductId
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Getthe review based on the productid
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/reviews"
   /review:
+    post:
+      summary: post the Review of  the product id
+      tags: [Reviews]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/reviews"
+      responses:
+        "201":
+          description: Created the review
+
   /review/{reviewId}:
+    get:
+      summary: Get the Review of based on the review id
+      tags: [Reviews]
+      parameters:
+        - name: reviewId
+          in: path
+          required: true
+          description: Get the Review based on the review ids
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Get the Reviews based on the review id
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/reviews"
+    patch:
+      summary: Update the review of the product id
+      tags: [Reviews]
+      parameters:
+        - name: reviewId
+          in: path
+          required: true
+          description: Review Id
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/reviews"
+      responses:
+        "201":
+          description: Updated the Review
+    delete:
+      summary: delete the Review of that Product id
+      tags: [Reviews]
+      parameters:
+        - name: reviewId
+          in: path
+          required: true
+          description: review Id
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/reviews"
+      responses:
+        "201":
+          description: Deleted the review of that product id
   /faq:
+    post:
+      summary: post the Faqs
+      tags: [FAQ]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/faq"
+      responses:
+        "201":
+          description: post the Faqs
+
   /faq/{productId}:
+    get:
+      summary: get the Faq based on the product Id
+      tags: [FAQ]
+      parameters:
+        - name: productId
+          in: path
+          required: true
+          description: ProductId of the faq
+      content:
+        appliaction/json:
+          schema:
+            $ref: "#/components/schemas/faq"
+      responses:
+        "200":
+          description: get the Faq of the product id
   /faq/{faqId}:
+    get:
+      summary: Get the Faqs based on the Faqs Id
+      tags: [FAQ]
+      parameters:
+        - name: faqId
+          in: path
+          required: true
+          description: faqs Id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/faq"
+      responses:
+        "200": description:Get the faqs based on the faqs id
+
+    patch:
+    delete:
   /address:
   /address/{userId}:
   /address/{addressId}:
