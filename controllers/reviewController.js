@@ -3,9 +3,13 @@ import Review from "../models/Review.js";
 export const getReviews = async (req, res) => {
   try {
     const productId = req.params.productId;
-    const reviews = await Review.find({ productId: productId });
+    const reviews = await Review.find({ productId: productId }).populate(
+      "userId",
+      { userName: 1 }
+    );
     res.status(200).json(reviews);
   } catch (error) {
+    console.log(error, "review Error");
     res.status(500).json({ message: error.message });
   }
 };
