@@ -14,7 +14,7 @@ indexRouter.get("/", function (req, res) {
 });
 
 indexRouter.use("/product", productRouter);
-indexRouter.use("/review", verifyToken, reviewRouter);
+indexRouter.use("/review", reviewRouter);
 indexRouter.use("/faq", faqRouter);
 indexRouter.use("/user", userRouter);
 indexRouter.use("/orders", verifyToken, orderRouter);

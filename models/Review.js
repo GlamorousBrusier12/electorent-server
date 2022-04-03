@@ -3,12 +3,12 @@ import mongoose from "mongoose";
 const reviewSchema = mongoose.Schema({
   productId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Products", // linking it to the user schema
+    ref: "Product", // linking it to the user schema
     required: true,
   },
   userId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Users",
+    ref: "User",
     required: true,
   },
 
