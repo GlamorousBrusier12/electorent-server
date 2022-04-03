@@ -16,7 +16,7 @@ indexRouter.get("/", function (req, res) {
 indexRouter.use("/product", productRouter);
 indexRouter.use("/review", verifyToken, reviewRouter);
 indexRouter.use("/faq", faqRouter);
-indexRouter.use("/user", verifyToken, userRouter);
+indexRouter.use("/user", userRouter);
 indexRouter.use("/orders", verifyToken, orderRouter);
 indexRouter.use("/address", verifyToken, addressRouter);
 indexRouter.use("/login", loginRoute);

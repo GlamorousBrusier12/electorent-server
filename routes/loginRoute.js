@@ -8,13 +8,13 @@ import { userRouter } from "./user.js";
 loginRoute.post("/", async (req, res) => {
   const user = {
     emailid: req.body.useremail,
-    username: req.body.password,
+    password: req.body.password,
   };
   // Verify User Id and Password
 
   const userCheck = await User.findOne({ emailid: req.body.email });
   if (userCheck !== undefined) {
-    if (userCheck.password === password) {
+    if (userCheck.password === user.password) {
       jwt.sign({ user }, SECRET_KEY, { expiresIn: "24h" }, (err, token) => {
         if (err) {
           res.sendStatus(400);
