@@ -1,6 +1,6 @@
 # electorent-server
 
-## Follow the readme file to setup and use the repo
+## Follow the readme file to setup and use the repository
 
 ## for setup:
 
@@ -14,3 +14,4 @@
 1. Comment your code.
 2. follow all the above guidelines.
 3. to use added varibles in .env file, import them into ./config/config.js and then use them anywhere you wanted to
+4. go to '/api-docs' for the swagger documentation
