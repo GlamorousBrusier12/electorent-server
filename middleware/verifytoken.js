@@ -15,7 +15,7 @@ export default async function verifyToken(req, res, next) {
       if (err) {
         res.sendStatus(403);
       } else {
-        const user = await User.findOne({ emailid: authData.user.emailid });
+        const user = await User.findOne({ emailid: authData.user.useremail });
         req.user = user;
         res.json({
           message: "Succesfully Verified.",
