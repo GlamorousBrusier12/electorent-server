@@ -16,11 +16,11 @@ indexRouter.get("/", function (req, res) {
 });
 
 indexRouter.use("/product", productRouter);
-indexRouter.use("/review", verifyToken, reviewRouter);
+indexRouter.use("/review", reviewRouter);
 indexRouter.use("/faq", faqRouter);
 indexRouter.use("/debitcard", debitCardRouter);
 indexRouter.use("/upi", upiRouter);
 indexRouter.use("/user", userRouter);
-indexRouter.use("/orders", verifyToken, orderRouter);
-indexRouter.use("/address", verifyToken, addressRouter);
+indexRouter.use("/orders", orderRouter);
+indexRouter.use("/address", addressRouter);
 indexRouter.use("/login", loginRoute);

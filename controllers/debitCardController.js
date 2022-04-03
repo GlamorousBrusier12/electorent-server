@@ -10,7 +10,7 @@ export const placeDebitCard = async (req, res) => {
     });
     res.status(201).json({
       message: "Debit card added sucessfully",
-      debitCardId: newDebitCard.id,
+      debitCard: newDebitCard,
     });
   } catch (error) {
     console.log("error in adding the card ", error);
