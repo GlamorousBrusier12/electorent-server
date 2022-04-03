@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const faqSchema = mongoose.Schema({
   productId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Users", // linking it to the user schema
+    ref: "Products", // linking it to the user schema
     required: true,
   },
   question: {
