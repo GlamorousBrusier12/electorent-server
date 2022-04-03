@@ -7,17 +7,17 @@ import { User } from "../models/User.js";
 import { userRouter } from "./user.js";
 loginRoute.post("/", async (req, res) => {
   const user = {
-    useremail: req.body.username,
+    useremail: req.body.useremail,
     password: req.body.password,
   };
   // Verify User Id and Password
   console.log("user");
   console.log(user);
-  console.log("user-bidy");
+  console.log("user-body");
   console.log(req.body);
-  const userCheck = await User.findOne({ email: user.useremail });
+  const userCheck = await User.findOne({ email: req.body.useremail });
   console.log(userCheck);
-  if (userCheck !== undefined) {
+  if (userCheck) {
     if (
       userCheck.email === user.useremail &&
       userCheck.password === user.password
@@ -34,9 +34,11 @@ loginRoute.post("/", async (req, res) => {
         }
       });
     } else {
+      console.log("no success1");
       res.status(400);
     }
   } else {
+    console.log("no success2");
     res.status(400);
   }
 });
