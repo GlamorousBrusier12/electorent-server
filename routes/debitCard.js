@@ -10,6 +10,6 @@ import {
 export const debitCardRouter = express.Router();
 
 debitCardRouter.route("/user/:userId").get(getUserDebitCards);
-debitCardRouter.route("/").post(placeDebitCard);
+debitCardRouter.route("/").post(placeDebitCard).get(getAllDebitCards);
 
 debitCardRouter.route("/:id").patch(updateDebitCard).delete(deleteDebitCard);
