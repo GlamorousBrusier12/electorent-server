@@ -1,5 +1,17 @@
 import { User } from "../models/User.js";
 
+export const getAllUsers = async (req, res) => {
+  try {
+    const users = await User.find({});
+    res.status(200).json({
+      message: "all users retreived",
+      data: users,
+    });
+  } catch (error) {
+    console.log("error in getting all of the users: ", error);
+    res.status(500).end();
+  }
+};
 export const createUser = async (req, res) => {
   try {
     const newUser = await User.create(req.body);
@@ -32,7 +44,7 @@ export const updateUser = async (req, res) => {
     // make sure from the front-end that user is not updating the email, password
     // changing password might involve few additional steps
     // currently we can change any detail of the user
-    const userId = "6206a449b867589102e71f54";
+    const userId = "621e6d0cf58d562995742339";
     const user = await User.findByIdAndUpdate(userId, req.body, {
       new: true,
     });
@@ -48,7 +60,7 @@ export const updateUser = async (req, res) => {
 
 export const deleteUser = async (req, res) => {
   try {
-    const userId = "6206a449b867589102e71f54";
+    const userId = "621e6d0cf58d562995742339";
     // const userId = req.user.id;
     const user = await User.findByIdAndDelete(userId);
     res.status(200).json({

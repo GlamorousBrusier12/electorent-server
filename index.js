@@ -13,9 +13,11 @@ import { fileURLToPath } from "url";
 import { dirname } from "path";
 
 const swaggerDocument = YAML.load("./swagger.yaml");
-
+import cors from "cors";
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 // app.use(logger("dev"));
+app.use(logger("dev"));
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
