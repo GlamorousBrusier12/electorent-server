@@ -30,6 +30,7 @@ loginRoute.post("/", async (req, res) => {
         } else {
           res.status(200).json({
             token,
+            userId: userCheck._id,
           });
         }
       });
