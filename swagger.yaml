@@ -211,14 +211,13 @@ paths:
       tags: [Reviews]
       requestBody:
         required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/reviews"
       responses:
         "201":
           description: Created the review
-
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/reviews"
   /review/{reviewId}:
     get:
       summary: Get the Review of based on the review id
@@ -249,13 +248,13 @@ paths:
             type: string
       requestBody:
         required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/reviews"
       responses:
         "201":
           description: Updated the Review
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/reviews"
     delete:
       summary: delete the Review of that Product id
       tags: [Reviews]
@@ -268,26 +267,26 @@ paths:
             type: string
       requestBody:
         required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/reviews"
       responses:
         "201":
           description: Deleted the review of that product id
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/reviews"
   /faq:
     post:
       summary: post the Faqs
       tags: [FAQ]
       requestBody:
         required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/faq"
       responses:
         "201":
           description: post the Faqs
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/faq"
 
   /faq/{productId}:
     get:
@@ -298,13 +297,16 @@ paths:
           in: path
           required: true
           description: ProductId of the faq
-      content:
-        appliaction/json:
-          schema:
-            $ref: "#/components/schemas/faq"
+      requestBody:
+        required: true
       responses:
         "200":
           description: get the Faq of the product id
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/faq"
+
   /faq/{faqId}:
     get:
       summary: Get the Faqs based on the Faqs Id
@@ -316,15 +318,50 @@ paths:
           description: faqs Id
       requestBody:
         required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/faq"
       responses:
-        "200": description:Get the faqs based on the faqs id
+        "200":
+          description: Get the faqs based on the faqs id
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/faq"
 
     patch:
+      summary: Update the Faqid
+      tags: [FAQ]
+      parameters:
+        - name: faqId
+          in: path
+          required: true
+          description: faqid
+      requestBody:
+        required: true
+      responses:
+        "201":
+          description: updated succesfully the faq
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/faq"
+
     delete:
+      summary: Delete the Faq
+      tags: [FAQ]
+      parameters:
+        - name: faqId
+          in: path
+          required: true
+          description: Faqid
+      requestBody:
+        required: true
+      responses:
+        "201":
+          description: Successfully deleted the Faq based on  the id
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/faq"
+
   /address:
   /address/{userId}:
   /address/{addressId}:
