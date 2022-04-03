@@ -18,9 +18,9 @@ loginRoute.post("/", async (req, res) => {
   // Verify User Id and Password
   console.log("user");
   console.log(user);
-  console.log("user-bidy");
+  console.log("user-body");
   console.log(req.body);
-  const userCheck = await User.findOne({ email: user.useremail });
+  const userCheck = await User.findOne({ email: req.body.useremail });
   console.log(userCheck);
   if (userCheck !== undefined && userCheck !== null) {
     if (
@@ -34,13 +34,16 @@ loginRoute.post("/", async (req, res) => {
         } else {
           res.json({
             token,
+            userId: userCheck._id,
           });
         }
       });
     } else {
+      console.log("no success1");
       res.status(400);
     }
   } else {
+    console.log("no success2");
     res.status(400);
   }
 });
