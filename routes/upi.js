@@ -13,6 +13,6 @@ export const upiRouter = express.Router();
 upiRouter.route("/").get(getAllUpis);
 upiRouter.route("/").post(placeUpi);
 
-upiRouter.route("/:userId").get(getUserUpis);
+upiRouter.route("/user/:userId").get(getUserUpis);
 
-upiRouter.route("/:userId").patch(updateUpi).delete(deleteUpi);
+upiRouter.route("/:upiId").patch(updateUpi).delete(deleteUpi);
