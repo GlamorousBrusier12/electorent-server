@@ -3,7 +3,8 @@ import { Order } from "../models/Orders.js";
 export const placeOrder = async (req, res) => {
   try {
     // assume user is logged in and we have user in req.user
-    const userId = "621e6d0cf58d562995742339";
+    // const userId = "6241f03cfae38ce4a063e0ff";
+    const userId = req.body.userId;
     const newOrder = await Order.create({
       userId,
       ...req.body,
@@ -35,7 +36,8 @@ export const getUserOrders = async (req, res) => {
     const userId = req.params.userId;
     const userOrders = await Order.find({
       userId,
-    });
+    }).populate("productId");
+    // .exec();
     res.status(200).json({
       userOrders,
     });
