@@ -9,10 +9,5 @@ import {
 export const userRouter = express.Router();
 
 // test route for api
-userRouter
-  .route("/")
-  .get(getAllUsers)
-  .post(createUser)
-  .patch(updateUser)
-  .delete(deleteUser);
-userRouter.route("/:uid").get(getUser);
+userRouter.route("/").get(getAllUsers).post(createUser).delete(deleteUser);
+userRouter.route("/:uid").get(getUser).patch(updateUser);
