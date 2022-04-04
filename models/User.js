@@ -47,19 +47,19 @@ const userSchema = new mongoose.Schema({
   ],
   deliveryAddress: {
     type: String,
-    default: "",
+    default: "address/",
   },
   debitCards: {
     type: String,
-    default: "",
+    default: "debitcard/",
   },
   upi: {
     type: String,
-    default: "",
+    default: "upi/",
   },
   myOrders: {
     type: String,
-    default: "",
+    default: "orders/",
   },
   cart: {
     type: String,
