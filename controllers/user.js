@@ -44,7 +44,8 @@ export const updateUser = async (req, res) => {
     // make sure from the front-end that user is not updating the email, password
     // changing password might involve few additional steps
     // currently we can change any detail of the user
-    const userId = "621e6d0cf58d562995742339";
+    // const userId = "621e6d0cf58d562995742339";
+    const userId = req.params.uid;
     const user = await User.findByIdAndUpdate(userId, req.body, {
       new: true,
     });
