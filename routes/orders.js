@@ -1,6 +1,7 @@
 import express from "express";
 import {
   deleteOrder,
+  getAllOrders,
   getUserOrders,
   placeOrder,
   updateOrder,
@@ -8,7 +9,7 @@ import {
 export const orderRouter = express.Router();
 
 // test route for api
-orderRouter.route("/").post(placeOrder);
+orderRouter.route("/").post(placeOrder).get(getAllOrders);
 
 // get user related orders
 orderRouter.route("/:userId").get(getUserOrders);
