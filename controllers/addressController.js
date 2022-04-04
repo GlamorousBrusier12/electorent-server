@@ -16,7 +16,7 @@ export const getAddress = async (req, res) => {
 
 export const createAddress = async (req, res) => {
   try {
-    const userId = "6217bd46a55a38f1f0f0dc12";
+    const userId = req.body.userId;
     const newAddress = await Address.create({ userId, ...req.body });
     res.status(201).json(newAddress);
   } catch (error) {
