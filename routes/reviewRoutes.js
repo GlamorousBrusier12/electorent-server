@@ -6,9 +6,10 @@ import {
   deleteReview,
   updateReview,
 } from "../controllers/reviewController.js";
+import verifyToken from "../middleware/verifytoken.js";
 
 export const reviewRouter = Router();
 
 reviewRouter.get("/:productId", getReviews);
-reviewRouter.post("/", createReviews);
+reviewRouter.post("/", verifyToken, createReviews);
 reviewRouter.route("/:id").delete(deleteReview).patch(updateReview);
