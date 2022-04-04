@@ -938,7 +938,7 @@ components:
           type: string
           description: has the type of the UPI
         cardNo:
-          type: number
+          type: string
           description: has the card number of that particular UPI
         mobileNumber:
           type: number
@@ -950,7 +950,7 @@ components:
         userId: 6217bd46a55a38f1f0f0dc12
         upiType: Phone Pe
         avatar: image
-        cardNo: 123456789
+        cardNo: georgygey75@paytm
         mobileNumber: 9874561230
         userName: Ravindra tolchuru
 

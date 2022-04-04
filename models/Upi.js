@@ -8,6 +8,7 @@ const upiSchema = new mongoose.Schema({
   avatar: {
     type: String,
     required: true,
+    default: "",
   },
   upiType: {
     type: String,
@@ -18,7 +19,7 @@ const upiSchema = new mongoose.Schema({
     required: true,
   },
   cardNo: {
-    type: Number,
+    type: String,
     required: true,
   },
   mobileNumber: {
