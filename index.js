@@ -11,7 +11,6 @@ import morgan from "morgan";
 const app = express();
 import { fileURLToPath } from "url";
 import { dirname } from "path";
-
 const swaggerDocument = YAML.load("./swagger.yaml");
 import cors from "cors";
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));

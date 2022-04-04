@@ -16,10 +16,10 @@ loginRoute.post("/", async (req, res) => {
     password: req.body.password,
   };
   // Verify User Id and Password
-  console.log("user");
-  console.log(user);
-  console.log("user-body");
-  console.log(req.body);
+  // console.log("user");
+  // console.log(user);
+  // console.log("user-body");
+  // console.log(req.body);
   const userCheck = await User.findOne({ email: req.body.useremail });
   console.log(userCheck);
   if (userCheck !== undefined && userCheck !== null) {
