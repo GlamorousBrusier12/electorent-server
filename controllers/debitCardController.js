@@ -74,8 +74,11 @@ export const updateDebitCard = async (req, res) => {
 
 export const deleteDebitCard = async (req, res) => {
   try {
-    const debitCardId = req.params.debitCardId;
-    const deletedDebitCard = await debitCard.findByIdAndDelete(debitCardId);
+    const debitCardId = req.params.id;
+    const deletedDebitCard = await debitCard.findByIdAndRemove(debitCardId);
+    if (!deletedDebitCard) {
+      return res.status(404).json({ message: "Address not found" });
+    }
     // unlink all the user related data
     res.status(200).json({
       message: "deleted debit card sucessfully",
