@@ -18,7 +18,7 @@ const upiSchema = new mongoose.Schema({
     required: true,
   },
   cardNo: {
-    type: Number,
+    type: String,
     required: true,
   },
   mobileNumber: {
