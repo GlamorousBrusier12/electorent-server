@@ -2,6 +2,13 @@ import { User } from "../models/User.js";
 
 export const getAllUsers = async (req, res) => {
   try {
+    if (req.query.email) {
+      const user = await User.findOne({ email: req.query.email });
+      return res.status(200).json({
+        message: "User Create check",
+        user,
+      });
+    }
     const users = await User.find({});
     res.status(200).json({
       message: "all users retreived",
