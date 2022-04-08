@@ -2,6 +2,13 @@ import { User } from "../models/User.js";
 
 export const getAllUsers = async (req, res) => {
   try {
+    if (req.query.email) {
+      const user = await User.findOne({ email: req.query.email });
+      return res.status(200).json({
+        message: "User Create check",
+        user,
+      });
+    }
     const users = await User.find({});
     res.status(200).json({
       message: "all users retreived",
@@ -61,7 +68,7 @@ export const updateUser = async (req, res) => {
 
 export const deleteUser = async (req, res) => {
   try {
-    const userId = "621e6d0cf58d562995742339";
+    const userId = req.params.uid;
     // const userId = req.user.id;
     const user = await User.findByIdAndDelete(userId);
     res.status(200).json({

@@ -21,7 +21,7 @@ loginRoute.post("/", async (req, res) => {
   // console.log("user-body");
   // console.log(req.body);
   const userCheck = await User.findOne({ email: req.body.useremail });
-  console.log(userCheck);
+  // console.log(userCheck);
   if (userCheck !== undefined && userCheck !== null) {
     if (
       userCheck.email === user.useremail &&
@@ -39,11 +39,11 @@ loginRoute.post("/", async (req, res) => {
         }
       });
     } else {
-      console.log("no success1");
+      console.log("***********wrong password error********");
       res.status(400);
     }
   } else {
-    console.log("no success2");
+    console.log("***********User already exists***********");
     res.status(400);
   }
 });

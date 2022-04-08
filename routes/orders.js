@@ -3,6 +3,7 @@ import {
   deleteOrder,
   getAllOrders,
   getUserOrders,
+  placeMultipleOrders,
   placeOrder,
   updateOrder,
 } from "../controllers/orders.js";

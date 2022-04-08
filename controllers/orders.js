@@ -18,7 +18,25 @@ export const placeOrder = async (req, res) => {
     res.status(500).end();
   }
 };
-
+export const placeMultipleOrders = async (req, res) => {
+  try {
+    const userId = req.body.userId;
+    const orderedOn = req.body.orderedOn;
+    const orders = req.body.orders;
+    orders.forEach(async (order) => {
+      const orderDetails = await Order.create({
+        userId,
+        ...order,
+        orderedOn,
+        status: "ordered",
+      });
+    });
+    res.status(200).json({ message: "orders sucessfully placed" });
+  } catch (error) {
+    console.log("error in placing the order ", error);
+    res.status(500).end();
+  }
+};
 export const getAllOrders = async (req, res) => {
   try {
     const userOrders = await Order.find({});
