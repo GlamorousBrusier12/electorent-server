@@ -23,6 +23,7 @@ export const placeMultipleOrders = async (req, res) => {
     const userId = req.body.userId;
     const orderedOn = req.body.orderedOn;
     const orders = req.body.orders;
+    console.log(res.body);
     orders.forEach(async (order) => {
       const orderDetails = await Order.create({
         userId,
@@ -30,6 +31,7 @@ export const placeMultipleOrders = async (req, res) => {
         orderedOn,
         status: "ordered",
       });
+      console.log(orderDetails);
     });
     res.status(200).json({ message: "orders sucessfully placed" });
   } catch (error) {
