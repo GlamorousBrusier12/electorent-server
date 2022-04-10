@@ -263,16 +263,13 @@ paths:
           description: review Id
           schema:
             type: string
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/reviews"
       responses:
         "201":
           description: Deleted the review of that product id
-
+          content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/reviews"
   /faq:
     post:
       summary: post the Faqs
@@ -296,32 +293,17 @@ paths:
           in: path
           required: true
           description: ProductId of the faq
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Get the faqs based on the productid
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/faq"
-      responses:
-        "200":
-          description: get the Faq of the product id
-          content:
 
   /faq/{faqId}:
-    get:
-      summary: Get the Faqs based on the Faqs Id
-      tags: [FAQ]
-      parameters:
-        - name: faqId
-          in: path
-          required: true
-          description: faqs Id
-      responses:
-        "200":
-          description: Get the faqs based on the faqs id
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/faq"
-
     patch:
       summary: Update the Faqid
       tags: [FAQ]
@@ -348,16 +330,13 @@ paths:
           in: path
           required: true
           description: Faqid
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/faq"
       responses:
         "200":
           description: Successfully deleted the Faq based on  the id
-
+          content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/faq"
   /address:
     post:
       summary: Creates a new address
