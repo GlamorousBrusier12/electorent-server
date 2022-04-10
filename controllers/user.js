@@ -54,7 +54,7 @@ export const getUser = async (req, res) => {
 
 export const updateUser = async (req, res) => {
   try {
-    // const newUser = req.body;
+    const newUser = req.body;
     console.log(req.body);
     if (req.file) {
       // console.log(req.file);
