@@ -234,23 +234,6 @@ paths:
         "201":
           description: Created the review
   /review/{reviewId}:
-    get:
-      summary: Get the Review of based on the review id
-      tags: [Reviews]
-      parameters:
-        - name: reviewId
-          in: path
-          required: true
-          description: Get the Review based on the review ids
-          schema:
-            type: string
-      responses:
-        "200":
-          description: Get the Reviews based on the review id
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/reviews"
     patch:
       summary: Update the review of the product id
       tags: [Reviews]
