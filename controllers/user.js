@@ -1,5 +1,11 @@
 import { User } from "../models/User.js";
-
+import { v2 as cloudinary } from "cloudinary";
+import "dotenv/config";
+import {
+  CLOUDINARY_API_KEY,
+  CLOUDINARY_API_SECRET,
+  CLOUDINARY_CLOUD_NAME,
+} from "../config/config.js";
 export const getAllUsers = async (req, res) => {
   try {
     if (req.query.email) {
@@ -48,12 +54,23 @@ export const getUser = async (req, res) => {
 
 export const updateUser = async (req, res) => {
   try {
-    // make sure from the front-end that user is not updating the email, password
-    // changing password might involve few additional steps
-    // currently we can change any detail of the user
-    // const userId = "621e6d0cf58d562995742339";
+    const newUser = req.body;
+    console.log(req.body);
+    if (req.file) {
+      // console.log(req.file);
+      cloudinary.config({
+        cloud_name: CLOUDINARY_CLOUD_NAME,
+        api_key: CLOUDINARY_API_KEY,
+        api_secret: "IzAUHOuRY5wtn5mSK1E6gSkRdec",
+      });
+      // console.log(cloudinary.config());
+      const image = await cloudinary.uploader.upload(req.file.path);
+      console.log("uploaded image to cloudinary");
+      console.log(image.url);
+      newUser.avatar = image.url;
+    }
     const userId = req.params.uid;
-    const user = await User.findByIdAndUpdate(userId, req.body, {
+    const user = await User.findByIdAndUpdate(userId, newUser, {
       new: true,
     });
     if (!user) {
@@ -68,7 +85,7 @@ export const updateUser = async (req, res) => {
 
 export const deleteUser = async (req, res) => {
   try {
-    const userId = "621e6d0cf58d562995742339";
+    const userId = req.params.uid;
     // const userId = req.user.id;
     const user = await User.findByIdAndDelete(userId);
     res.status(200).json({
