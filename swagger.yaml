@@ -296,10 +296,10 @@ paths:
           in: path
           required: true
           description: ProductId of the faq
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/faq"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/faq"
       responses:
         "200":
           description: get the Faq of the product id
