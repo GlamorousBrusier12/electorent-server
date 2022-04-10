@@ -54,17 +54,19 @@ export const getUser = async (req, res) => {
 
 export const updateUser = async (req, res) => {
   try {
-    const newUser = req.body;
+    // const newUser = req.body;
+    console.log(req.body);
     if (req.file) {
-      console.log(req.file);
+      // console.log(req.file);
       cloudinary.config({
         cloud_name: CLOUDINARY_CLOUD_NAME,
         api_key: CLOUDINARY_API_KEY,
         api_secret: "IzAUHOuRY5wtn5mSK1E6gSkRdec",
       });
-      console.log(cloudinary.config());
+      // console.log(cloudinary.config());
       const image = await cloudinary.uploader.upload(req.file.path);
-      console.log(image);
+      console.log("uploaded image to cloudinary");
+      console.log(image.url);
       newUser.avatar = image.url;
     }
     const userId = req.params.uid;
