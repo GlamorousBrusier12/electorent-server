@@ -19,6 +19,8 @@ import { v2 as cloudinary } from "cloudinary";
 import fsr from "file-stream-rotator";
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+// app.use(logger("dev"));
+// app.use(morgan("dev"));
 app.use(logger("dev"));
 app.use(cors());
 app.use(express.json());
@@ -42,17 +44,28 @@ app.use(express.urlencoded({ extended: false }));
 //     res.status(500).end();
 //   }
 // });
-app.use("/api", indexRouter);
+
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = dirname(__filename);
+
+// let logsinfo = fsr.getStream({
+//   filename: "test.log",
+//   frequency: "1h",
+//   verbose: true,
+// });
+// app.use(morgan("combined", { stream: logsinfo }));
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-
-let logsinfo = fsr.getStream({
-  filename: "test.log",
-  frequency: "1h",
-  verbose: true,
+let logStream = fs.createWriteStream(path.join(__dirname, "file.log"), {
+  flags: "a",
 });
-app.use(morgan("combined", { stream: logsinfo }));
+app.use(
+  morgan(":method :url :status :date[iso] :response-time ms", {
+    stream: logStream,
+  })
+);
+app.use("/api", indexRouter);
 
 app.listen(PORT, (e) => {
   if (e) {
