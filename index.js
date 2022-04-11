@@ -16,6 +16,7 @@ import cors from "cors";
 import { multerUploads } from "./middleware/multer.js";
 import "dotenv/config";
 import { v2 as cloudinary } from "cloudinary";
+import fsr from "file-stream-rotator";
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use(logger("dev"));
@@ -45,10 +46,13 @@ app.use("/api", indexRouter);
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-let logStream = fs.createWriteStream(path.join(__dirname, "file.log"), {
-  flags: "a",
+
+let logsinfo = fsr.getStream({
+  filename: "test.log",
+  frequency: "1h",
+  verbose: true,
 });
-app.use(morgan("combined", { stream: logStream }));
+app.use(morgan("combined", { stream: logsinfo }));
 
 app.listen(PORT, (e) => {
   if (e) {
