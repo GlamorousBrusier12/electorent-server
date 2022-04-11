@@ -5,7 +5,7 @@ export const getReviews = async (req, res) => {
     const productId = req.params.productId;
     const reviews = await Review.find({ productId: productId }).populate(
       "userId",
-      { userName: 1 }
+      { fullName: 1, avatar: 1 }
     );
     res.status(200).json(reviews);
   } catch (error) {

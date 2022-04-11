@@ -53,7 +53,7 @@ export const getUserDebitCards = async (req, res) => {
 
 export const updateDebitCard = async (req, res) => {
   try {
-    const debitCardId = req.params.debitCardId;
+    const debitCardId = req.params.id;
     const newDebitCardDetails = req.body;
     const newDebitCard = await debitCard.findByIdAndUpdate(
       debitCardId,
