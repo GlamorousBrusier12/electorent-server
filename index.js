@@ -13,10 +13,7 @@ import { fileURLToPath } from "url";
 import { dirname } from "path";
 const swaggerDocument = YAML.load("./swagger.yaml");
 import cors from "cors";
-import { multerUploads } from "./middleware/multer.js";
 import "dotenv/config";
-import { v2 as cloudinary } from "cloudinary";
-import fsr from "file-stream-rotator";
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use(logger("dev"));
