@@ -12,6 +12,7 @@ export default async function verifyToken(req, res, next) {
     const bearer = bearerHeader.split(" ");
     const bearerToken = bearer[1];
     req.token = bearerToken;
+    // Extract token from the header
     jwt.verify(req.token, SECRET_KEY, async (err, authData) => {
       if (err) {
         res.sendStatus(403);
