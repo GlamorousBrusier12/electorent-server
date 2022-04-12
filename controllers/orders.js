@@ -20,10 +20,12 @@ export const placeOrder = async (req, res) => {
 };
 export const placeMultipleOrders = async (req, res) => {
   try {
+    // gets order details from the req.body and order details
     const userId = req.body.userId;
     const orderedOn = req.body.orderedOn;
     const orders = req.body.orders;
     console.log(res.body);
+    // places the order one by one
     orders.forEach(async (order) => {
       const orderDetails = await Order.create({
         userId,
@@ -41,6 +43,7 @@ export const placeMultipleOrders = async (req, res) => {
 };
 export const getAllOrders = async (req, res) => {
   try {
+    // finds all orders and returns them
     const userOrders = await Order.find({});
     res.status(200).json({
       userOrders,
@@ -53,11 +56,11 @@ export const getAllOrders = async (req, res) => {
 
 export const getUserOrders = async (req, res) => {
   try {
+    // finds all orders based on the user id and returns them
     const userId = req.params.userId;
     const userOrders = await Order.find({
       userId,
     }).populate("productId");
-    // .exec();
     res.status(200).json({
       userOrders,
     });
@@ -69,6 +72,7 @@ export const getUserOrders = async (req, res) => {
 
 export const updateOrder = async (req, res) => {
   try {
+    // updates the order details based on the order Id
     const orderId = req.params.orderId;
     const newOrderDetails = req.body;
     const order = await Order.findByIdAndUpdate(orderId, newOrderDetails, {
@@ -86,6 +90,7 @@ export const updateOrder = async (req, res) => {
 
 export const deleteOrder = async (req, res) => {
   try {
+    // deletes the orders based on the orderId
     const orderId = req.params.orderId;
     const order = await Order.findByIdAndDelete(orderId);
     // unlink all the user related data
