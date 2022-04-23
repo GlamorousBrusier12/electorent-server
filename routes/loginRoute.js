@@ -6,22 +6,14 @@ import { SECRET_KEY } from "../config/config.js";
 import { User } from "../models/User.js";
 import { userRouter } from "./user.js";
 
-function saveTokenInLocal(token) {
-  localStorage.setItem("JWTToken", token);
-}
-
 loginRoute.post("/", async (req, res) => {
+  //Get User Email and Password from the body
   const user = {
     useremail: req.body.useremail,
     password: req.body.password,
   };
   // Verify User Id and Password
-  // console.log("user");
-  // console.log(user);
-  // console.log("user-body");
-  // console.log(req.body);
   const userCheck = await User.findOne({ email: req.body.useremail });
-  // console.log(userCheck);
   if (userCheck !== undefined && userCheck !== null) {
     if (
       userCheck.email === user.useremail &&

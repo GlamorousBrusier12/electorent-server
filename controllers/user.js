@@ -6,8 +6,10 @@ import {
   CLOUDINARY_API_SECRET,
   CLOUDINARY_CLOUD_NAME,
 } from "../config/config.js";
+
 export const getAllUsers = async (req, res) => {
   try {
+    // if there is  a email in the request's query then it sends that user
     if (req.query.email) {
       const user = await User.findOne({ email: req.query.email });
       return res.status(200).json({
@@ -15,6 +17,7 @@ export const getAllUsers = async (req, res) => {
         user,
       });
     }
+    // if there is no email in the request's query then returns all the users
     const users = await User.find({});
     res.status(200).json({
       message: "all users retreived",
@@ -25,8 +28,10 @@ export const getAllUsers = async (req, res) => {
     res.status(500).end();
   }
 };
+// creates the user
 export const createUser = async (req, res) => {
   try {
+    // takes all the required feilds from the user and creates a user obj
     const newUser = await User.create(req.body);
     res.status(201).json({
       message: "user created",
@@ -40,6 +45,7 @@ export const createUser = async (req, res) => {
 
 export const getUser = async (req, res) => {
   try {
+    // gets the user based on the userId
     const userId = req.params.uid;
     const user = await User.findById(userId);
     res.status(200).json({
@@ -55,20 +61,24 @@ export const getUser = async (req, res) => {
 export const updateUser = async (req, res) => {
   try {
     const newUser = req.body;
-    console.log(req.body);
+    // console.log(req.body);
+    // updates the user based on the updated information
     if (req.file) {
-      // console.log(req.file);
+      // if there is a file upload then it will upload the file
+      // to cloudinary and get link from there
       cloudinary.config({
         cloud_name: CLOUDINARY_CLOUD_NAME,
         api_key: CLOUDINARY_API_KEY,
         api_secret: "IzAUHOuRY5wtn5mSK1E6gSkRdec",
       });
-      // console.log(cloudinary.config());
+      // uploads image to cloudinary
       const image = await cloudinary.uploader.upload(req.file.path);
       console.log("uploaded image to cloudinary");
       console.log(image.url);
+      // stores the image in the database
       newUser.avatar = image.url;
     }
+    // updates the user info
     const userId = req.params.uid;
     const user = await User.findByIdAndUpdate(userId, newUser, {
       new: true,
@@ -86,7 +96,7 @@ export const updateUser = async (req, res) => {
 export const deleteUser = async (req, res) => {
   try {
     const userId = req.params.uid;
-    // const userId = req.user.id;
+    // deletes the user based on the id of the user
     const user = await User.findByIdAndDelete(userId);
     res.status(200).json({
       message: "deleted user sucessfully",
