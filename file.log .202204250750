@@ -1,0 +1,4 @@
+POST /api/create-checkout-session 404 2022-04-25T02:20:16.794Z 3.641 ms
+GET /api/favicon.ico 404 2022-04-25T02:20:17.132Z 3.181 ms
+POST /api/create-checkout-session 404 2022-04-25T02:20:48.220Z 3.811 ms
+POST /api/create-checkout-session 404 2022-04-25T02:20:52.308Z 2.890 ms
