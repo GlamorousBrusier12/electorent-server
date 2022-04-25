@@ -5,6 +5,7 @@ import {
   updateAddress,
   deleteAddress,
 } from "../controllers/addressController.js";
+import verifyToken from "../middleware/verifytoken.js";
 
 export const addressRouter = Router();
 
@@ -12,7 +13,10 @@ export const addressRouter = Router();
 addressRouter.route("/:userId").get(getAddress);
 
 // post route of the address api
-addressRouter.route("/").post(createAddress);
+addressRouter.route("/").post(verifyToken, createAddress);
 
 // update and the delete routes for the address api using address id
-addressRouter.route("/:id").patch(updateAddress).delete(deleteAddress);
+addressRouter
+  .route("/:id")
+  .patch(verifyToken, updateAddress)
+  .delete(verifyToken, deleteAddress);

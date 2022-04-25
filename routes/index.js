@@ -9,7 +9,7 @@ import { addressRouter } from "./addressRoutes.js";
 import { debitCardRouter } from "./debitCard.js";
 import { upiRouter } from "./upi.js";
 import { loginRoute } from "./loginRoute.js";
-import verifyToken from "../middleware/verifytoken.js";
+import { paymentRouter } from "./payment.js";
 // test route for api
 indexRouter.get("/", function (req, res) {
   res.status(200).json({ message: "ok" });
@@ -24,3 +24,4 @@ indexRouter.use("/user", userRouter);
 indexRouter.use("/orders", orderRouter);
 indexRouter.use("/address", addressRouter);
 indexRouter.use("/login", loginRoute);
+indexRouter.use("/create-checkout-session", paymentRouter);
