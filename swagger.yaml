@@ -616,6 +616,13 @@ paths:
     post:
       summary: Creates a new order
       tags: [Orders]
+      parameters:
+        - in: header
+          name: X-Request-ID
+          schema:
+            type: string
+            format: uuid
+          required: true
       requestBody:
         required: true
         content:

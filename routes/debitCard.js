@@ -10,11 +10,11 @@ import verifyToken from "../middleware/verifytoken.js";
 
 export const debitCardRouter = express.Router();
 
-debitCardRouter.route("/user/:userId").get(verifyToken, getUserDebitCards);
+debitCardRouter.route("/user/:userId").get(getUserDebitCards);
 debitCardRouter
   .route("/")
   .post(verifyToken, placeDebitCard)
-  .get(verifyToken, getAllDebitCards);
+  .get(getAllDebitCards);
 
 debitCardRouter
   .route("/:id")
