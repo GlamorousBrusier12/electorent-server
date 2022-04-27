@@ -28,7 +28,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 let logStream = fsr.getStream({
-  filename: "file.log ",
+  filename: "file.log",
   frequency: "1h",
   verbose: true,
 });
@@ -40,43 +40,6 @@ app.use(
     stream: logStream,
   })
 );
-
-// Stripe API
-
-// import Stripe from "stripe";
-// const stripe = new Stripe(process.env.STRIPE_PRIVATE_KEY);
-// const storeItems = new Map([
-//   [1, { priceInCents: 10000, name: "Learn React Today" }],
-//   [2, { priceInCents: 20000, name: "Learn CSS Today" }],
-// ]);
-
-// app.post("/payment", async (req, res) => {
-//   try {
-//     const session = await stripe.checkout.sessions.create({
-//       payment_method_types: ["card"],
-//       mode: "payment",
-//       line_items: req.body.items.map((item) => {
-//         const storeItem = storeItems.get(item.id);
-//         return {
-//           price_data: {
-//             currency: "usd",
-//             product_data: {
-//               name: storeItem.name,
-//             },
-//             unit_amount: storeItem.priceInCents,
-//           },
-//           quantity: item.quantity,
-//         };
-//       }),
-//       success_url: `http://localhost:3000/confirmation`,
-//       cancel_url: `http://localhost:3000/cart`,
-//     });
-//     res.json({ url: session.url });
-//   } catch (e) {
-//     res.status(500).json({ error: e.message });
-//   }
-// });
-
 app.use("/api", indexRouter);
 
 app.listen(PORT, (e) => {
