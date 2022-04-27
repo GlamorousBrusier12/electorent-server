@@ -14,7 +14,7 @@ loginRoute.post("/", async (req, res) => {
   };
   // Verify User Id and Password
   const userCheck = await User.findOne({ email: req.body.useremail });
-  if (userCheck !== undefined && userCheck !== null) {
+  if (userCheck) {
     if (
       userCheck.email === user.useremail &&
       userCheck.password === user.password
@@ -32,10 +32,10 @@ loginRoute.post("/", async (req, res) => {
       });
     } else {
       console.log("***********wrong password error********");
-      res.status(400);
+      res.status(400).end();
     }
   } else {
-    console.log("***********User already exists***********");
-    res.status(400);
+    console.log("*********** User doesn't exists ***********");
+    res.status(400).end();
   }
 });

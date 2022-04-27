@@ -19,6 +19,7 @@ const userSchema = new mongoose.Schema({
   },
   mobileNumber: {
     type: String,
+    required: true,
   },
   panNumber: {
     type: String,
