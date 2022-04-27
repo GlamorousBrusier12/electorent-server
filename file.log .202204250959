@@ -1,3 +1,0 @@
-POST /api/create-checkout-session 303 2022-04-25T04:29:00.625Z 1206.345 ms
-GET /api/product 304 2022-04-25T04:29:09.086Z 13.486 ms
-GET /api/product 304 2022-04-25T04:29:09.099Z 10.095 ms

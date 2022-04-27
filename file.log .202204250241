@@ -1,8 +1,0 @@
-GET /api/babel/parser/lib/index.js 404 2022-04-24T21:11:30.033Z 0.784 ms
-GET /api/babel/parser/lib/index.js 404 2022-04-24T21:11:30.044Z 0.661 ms
-GET /api/babel/parser/lib/index.js 404 2022-04-24T21:11:30.070Z 0.709 ms
-GET /api/babel/parser/lib/index.js 404 2022-04-24T21:11:30.306Z 1.492 ms
-GET /api/product 304 2022-04-24T21:11:32.624Z 7.253 ms
-POST /api/payment 404 2022-04-24T21:11:35.092Z 0.686 ms
-POST /api/payment 404 2022-04-24T21:11:35.937Z 0.775 ms
-POST /api/payment 404 2022-04-24T21:11:36.133Z 0.456 ms
