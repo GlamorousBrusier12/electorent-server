@@ -55,7 +55,7 @@ describe("Users", () => {
 
 describe("Products", () => {
   describe("/GET products", () => {
-    it("it should GET all the products", (done) => {
+    it("it should GET all th products", (done) => {
       chai
         .request(server)
         .get("/product")
