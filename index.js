@@ -32,15 +32,15 @@ let logStream = fsr.getStream({
   frequency: "1h",
   verbose: true,
 });
-// let logStream = fs.createWriteStream(path.join(__dirname, "file.log"), {
-//   flags: "a",
-// });
 app.use(
   morgan(":method :url :status :date[iso] :response-time ms", {
     stream: logStream,
   })
 );
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2697ad533b48f6376f4fc6cfe4da130e894e2dca
 app.use("/api", indexRouter);
 
 app.listen(PORT, (e) => {
