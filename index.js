@@ -32,9 +32,6 @@ let logStream = fsr.getStream({
   frequency: "1h",
   verbose: true,
 });
-// let logStream = fs.createWriteStream(path.join(__dirname, "file.log"), {
-//   flags: "a",
-// });
 app.use(
   morgan(":method :url :status :date[iso] :response-time ms", {
     stream: logStream,
