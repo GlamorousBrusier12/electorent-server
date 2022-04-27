@@ -37,10 +37,6 @@ app.use(
     stream: logStream,
   })
 );
-<<<<<<< HEAD
-
-=======
->>>>>>> 2697ad533b48f6376f4fc6cfe4da130e894e2dca
 app.use("/api", indexRouter);
 
 app.listen(PORT, (e) => {
