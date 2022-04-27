@@ -11,9 +11,12 @@ import verifyToken from "../middleware/verifytoken.js";
 export const orderRouter = express.Router();
 
 // test route for api
-orderRouter.route("/").post(verifyToken, placeMultipleOrders).get(getAllOrders);
+orderRouter.route("/").post(placeMultipleOrders).get(getAllOrders);
 
 // get user related orders
 orderRouter.route("/:userId").get(getUserOrders);
 
-orderRouter.route("/:orderId").patch(updateOrder).delete(deleteOrder);
+orderRouter
+  .route("/:orderId")
+  .patch(verifyToken, updateOrder)
+  .delete(verifyToken, deleteOrder);

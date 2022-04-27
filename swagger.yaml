@@ -5,6 +5,7 @@ info:
   description: REST api for Electorent
 servers:
   - url: http://localhost:8000/api/
+  - url: https://electorent-api.herokuapp.com/api/
 tags:
   - name: Products
     description: Api to manage products
@@ -615,6 +616,13 @@ paths:
     post:
       summary: Creates a new order
       tags: [Orders]
+      parameters:
+        - in: header
+          name: X-Request-ID
+          schema:
+            type: string
+            format: uuid
+          required: true
       requestBody:
         required: true
         content:
